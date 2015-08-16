@@ -1,19 +1,19 @@
-### serverstatus # ServerStatus #> ServerStatus {tpl-git PHPDaemon/Applications/ServerStatus.php}
+### Serverstatus # ServerStatus #> ServerStatus {tpl-git PHPDaemon/Applications/ServerStatus.php}
 
-```php:p
+```Php:p
 namespace PHPDaemon\Applications;
 class ServerStatus;
 ```
 
-Это приложение обеспечивает получение информации о состоянии phpDaemon по протоколу HTTP, аналогично консольной команде `phpd fullstatus`.
+This application provides information about the status of phpDaemon over HTTP, similar to a console command `phpd fullstatus`.
 
-#### use # Использование
+#### use # Use
 
-Необходимо добавить в `conf/phpd.conf`:
+You must add in `conf/phpd.conf`:
 
 ```
 ServerStatus {
-    enable    1;
+    enable 1;
 }
 HTTP {
     enable 1;
@@ -21,23 +21,23 @@ HTTP {
 }
 ```
 
-Также в `conf/AppResolver.php` в методе `getRequestRoute()` добавить условие для запуска метода `beginRequest()` в приложении ServerStatus. Например, чтобы получить информацию о phpDaemon по адресу http://<host>/ServerStatus/:
+Also in the `conf/AppResolver.php` in method `getRequestRoute()` add the condition to run the method `beginRequest()` in Annex ServerStatus. For example, to get information about phpDaemon at http://<host>/ServerStatus/:
 
-```php
+```Php
 /**
  * Routes incoming request to related application. Method is for overloading.   
- * @param object Request.
- * @param object AppInstance of Upstream.
- * @return string Application's name.
+ * @param Object Request.
+ * @param Object AppInstance of Upstream.
+ * @return String Application's name.
  */
 public function getRequestRoute($req, $upstream) {
-    if (preg_match('~^/(ServerStatus|Example)/~', $req->attrs->server['DOCUMENT_URI'], $m)) {
+    if (preg_match ('~ ^/(ServerStatus|Example)/~', $req->attrs->server['DOCUMENT_URI'], $m)) {
         return $m[1];
     }
 }
 ```
 
-Пример ответа:
+Example Response:
 
 ```
 Uptime: 1 day. 11 hour. 33 min. 51 sec.
@@ -51,9 +51,9 @@ State of workers:
         Init: 0
 ```
 
-#### note # Примечание
+#### note # Note
 
-Если вы используете опцию --logworkersetstatus, то соответствие такое:
+If you use the --logworkersetstatus, the line is:
 
  - 1 - idle
  - 2 - busy
