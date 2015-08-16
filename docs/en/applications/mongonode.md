@@ -1,4 +1,4 @@
-### Mongonode # MongoNode #> MongoNode {tpl-git PHPDaemon/Example/MongoNode.php}
+### Mongonode # MongoNode #> MongoNode {tpl-git PHPDaemon/Examples/MongoNode.php}
 
 ```Php:p
 namespace PHPDaemon\Examples;
