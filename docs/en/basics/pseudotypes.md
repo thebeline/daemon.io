@@ -1,5 +1,5 @@
-### pseudotypes # Псевдотипы
+### pseudotypes # Pseudotypes
 
 #### url # url
 
-Псевдотип url @TODO
+Pseudotypes url @TODO
